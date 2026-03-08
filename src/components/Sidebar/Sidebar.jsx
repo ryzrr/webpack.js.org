@@ -30,13 +30,13 @@ export default function Sidebar({ className = "", pages, currentPage }) {
   return (
     <nav className={`sidebar ${className}`}>
       <div className="sidebar__inner">
-        <div className="relative z-0 bg-white dark:bg-gray-100 ">
+        <div className="relative z-0 bg-white dark:bg-gray-800">
           <label htmlFor="docs-version" className="sr-only">
             Select webpack version
           </label>
           <select
             id="docs-version"
-            className="text-gray-600 text-14 px-5 py-5 appearance-none box-border border border-gray-200 border-solid flex-col flex w-full rounded-none bg-transparent bg-none"
+            className="text-gray-600 dark:text-gray-300 text-14 px-5 py-5 appearance-none box-border border border-gray-200 dark:border-gray-600 border-solid flex-col flex w-full rounded-none bg-transparent bg-none"
             value={version}
             onChange={(event) => {
               setVersion(Number(event.target.value));
