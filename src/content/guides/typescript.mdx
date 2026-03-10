@@ -175,7 +175,7 @@ There are 5 ways to use TypeScript in `webpack.config.ts`:
 
 <Badge text="5.105.0+" />
 
-If you use [`compilerOptions.paths`](https://www.typescriptlang.org/tsconfig#paths) or `compilerOptions.baseUrl` in your `tsconfig.json` to create import aliases, starting with webpack 5.105, webpack can read these aliases directly via [`resolve.tsconfig`](/configuration/resolve/#resolvetsconfig). In many cases this removes the need for [`tsconfig-paths-webpack-plugin`](https://www.npmjs.com/package/tsconfig-paths-webpack-plugin).
+If you use [`compilerOptions.paths`](https://www.typescriptlang.org/tsconfig#paths) or `compilerOptions.baseUrl` in your `tsconfig.json` to create import aliases, starting with webpack 5.105, webpack can read these aliases directly via [`resolve.tsconfig`](/configuration/resolve/#resolvetsconfig). This replaces [`tsconfig-paths-webpack-plugin`](https://www.npmjs.com/package/tsconfig-paths-webpack-plugin), which should no longer be used.
 
 `resolve.tsconfig` accepts `boolean | string | object`:
 
