@@ -241,9 +241,7 @@ export const greeting = "Bonjour";
 
 **src/index.js**
 
-{/* eslint-disable */}
-
-```js
+```text
 const language = navigator.language.split("-")[0]; // "en", "fr", etc.
 const locale = import.defer("./locales/" + language + ".js");
 
@@ -252,8 +250,6 @@ document.getElementById("btn").addEventListener("click", () => {
   document.getElementById("output").textContent = locale.greeting;
 });
 ```
-
-{/* eslint-enable */}
 
 Webpack prepares all matching locale modules so they are ready for execution, but the selected module is only evaluated when `locale.greeting` is first accessed. This allows you to load multiple locale files without executing them immediately.
 
