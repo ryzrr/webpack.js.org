@@ -821,11 +821,12 @@ Accepted values:
   };
   ```
 
-  With this configuration, custom properties on `import.meta` are preserved in the generated output:
+  With this configuration, custom properties on `import.meta` set by the build tool or runtime are preserved in the generated output:
 
   ```js
-  if (!import.meta.UNKNOWN_PROPERTY) {
-    import.meta.UNKNOWN_PROPERTY = "HELLO";
+  // import.meta.customProp is set externally (e.g. by a build tool or runtime)
+  if (import.meta.customProp) {
+    console.log(import.meta.customProp);
   }
   ```
 
