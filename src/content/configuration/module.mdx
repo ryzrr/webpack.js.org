@@ -778,8 +778,6 @@ Specifies the behavior of invalid export names in `\"import ... from ...\"`.
 
 #### module.parser.javascript.importMeta
 
-<Badge text="5.105.0+" />
-
 Controls how webpack evaluates `import.meta` expressions during bundling.
 
 - Type: `boolean | 'preserve-unknown'`
@@ -790,7 +788,7 @@ Accepted values:
 
 - `true` - webpack evaluates known `import.meta` properties (e.g. `import.meta.url`, `import.meta.webpackHot`); behavior of unknown properties depends on other configuration (e.g. `output.module`).
 - `false` - disables all `import.meta` evaluation; webpack leaves expressions as-is.
-- `'preserve-unknown'` - evaluates known properties as usual but **preserves** any non-standard properties verbatim in the output instead of removing them.
+- `'preserve-unknown'` <Badge text="5.105.0+" /> - evaluates known properties as usual but **preserves** any non-standard properties verbatim in the output instead of removing them.
 
   W> When `output.module` is `true`, unknown `import.meta` properties are preserved automatically without this option.
 
