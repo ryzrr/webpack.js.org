@@ -114,6 +114,7 @@ export default function SidebarItem({ title, anchors = [], url, currentPage }) {
       <NavLink
         end
         key={url}
+        data-testid="sidebar-item-title"
         className={({ isActive }) =>
           `flex-1 max-w-[85%] overflow-hidden whitespace-nowrap text-ellipsis ${isActive ? "font-semibold text-[#333] dark:text-white" : "text-[#2b3a42] dark:text-[#b8b8b8]"}`
         }
