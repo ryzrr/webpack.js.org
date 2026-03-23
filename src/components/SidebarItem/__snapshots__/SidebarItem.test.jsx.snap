@@ -19,6 +19,7 @@ exports[`SidebarItem matches snapshot 1`] = `
   <a
     class="flex-1 max-w-[85%] overflow-hidden whitespace-nowrap text-ellipsis text-[#2b3a42] dark:text-[#b8b8b8]"
     data-discover="true"
+    data-testid="sidebar-item-title"
     href="/guides/getting-started/"
   >
     Getting Started
