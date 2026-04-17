@@ -13,6 +13,7 @@ contributors:
   - astonizer
   - snitin315
   - Brennvo
+  - mr-baraiya
 ---
 
 If you've been following the guides from the start, you will now have a small project that shows "Hello webpack". Now let's try to incorporate some other assets, like images, to see how they can be handled.
@@ -95,15 +96,26 @@ npm install --save-dev style-loader css-loader
  };
 ```
 
-Module loaders can be chained. Each loader in the chain applies transformations to the processed resource. A chain is executed in reverse order. The first loader passes its result (resource with applied transformations) to the next one, and so forth. Finally, webpack expects JavaScript to be returned by the last loader in the chain.
+Module loaders can be chained. Each loader in the chain applies transformations to the processed resource. A chain is executed in reverse order (right to left).
 
-The above order of loaders should be maintained: [`'style-loader'`](/loaders/style-loader) comes first and followed by [`'css-loader'`](/loaders/css-loader). If this convention is not followed, webpack is likely to throw errors.
+For example, given the following rule:
 
-T> webpack uses a regular expression to determine which files it should look for and serve to a specific loader. In this case, any file that ends with `.css` will be served to the `style-loader` and the `css-loader`.
+```js
+export default {
+  module: {
+    rules: [
+      {
+        test: /\.scss$/i,
+        use: ["postcss-loader", "sass-loader"],
+      },
+    ],
+  },
+};
+```
 
-This enables you to `import './style.css'` into the file that depends on that styling. Now, when that module is run, a `<style>` tag with the stringified css will be inserted into the `<head>` of your html file.
+Even though `postcss-loader` appears before `sass-loader` in the `use` array, webpack runs `sass-loader` first (compiling Sass into CSS), then runs `postcss-loader` on the result.
 
-Let's try it out by adding a new `style.css` file to our project and import it in our `index.js`:
+If this order is not maintained, webpack may throw errors.
 
 **project**
 
