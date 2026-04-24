@@ -125,12 +125,14 @@ W> Avoid top-level await in your entry point when targeting the **browser**. It 
 ```js
 // user.js (async ESM module)
 const response = await fetch("/api/user");
+
 export const user = await response.json();
 ```
 
 ```js
 // index.js - importing an async module works as expected
 import { user } from "./user.js";
+
 console.log(user.name);
 ```
 
@@ -139,11 +141,11 @@ console.log(user.name);
 Imports in ESM are resolved more strictly. Relative requests must include a file extension (e.g. `*.js` or `*.mjs`) following the Node.js convention when the file is flagged as ESM:
 
 ```js
+// will fail - missing extension
+import { helper as missingExt } from "./utils";
+
 // correct in ESM
 import { helper } from "./utils.js";
-
-// will fail - missing extension
-import { helper } from "./utils";
 ```
 
 T> Requests to packages e.g. `import "lodash"` are still supported.
@@ -174,15 +176,15 @@ When importing from a CommonJS module inside ESM, only the `default` export
 is available (the entire `module.exports` object):
 
 ```js
+// esm-consumer.js (ESM)
+import cjs from "./cjs-module.js";
+// named imports from CJS don't work
+import { foo } from "./cjs-module.js"; // undefined
+
 // cjs-module.js (CommonJS)
 module.exports = { foo: 1, bar: 2 };
 
-// esm-consumer.js (ESM)
-import cjs from "./cjs-module.js";
 console.log(cjs.foo); // works - cjs is the whole exports object
-
-// named imports from CJS don't work
-import { foo } from "./cjs-module.js"; // undefined
 ```
 
 This strict behavior applies when webpack treats the **imported** module as CommonJS.
